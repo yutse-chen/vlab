@@ -1,0 +1,114 @@
+/* Code By Webdevtrick ( https://webdevtrick.com ) */
+body {
+  background: #eeeeee;
+  color: #212121;
+  padding: 20px;
+}
+
+body > div {
+  width: 20%;
+  float: left;
+  margin-right: 5%;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0 0 10px 0;
+}
+
+h2 {
+  margin: 0 0 10px 0;
+}
+#example-one {
+  background: #f06d06;
+}
+#example-one .active-1 {
+  background: #fa9748;
+}
+
+#example-two {
+  background: #0dacc4;
+}
+#example-two .active-1 {
+  background: #40dbf2;
+}
+#example-two .active-2 {
+  background: #10ceea;
+}
+
+#example-three {
+  background: #1acd0d;
+}
+#example-three .active-1 {
+  background: #41f234;
+}
+#example-three .active-2 {
+  background: #2bf11c;
+}
+#example-three .active-3 {
+  background: #1de50f;
+}
+
+#example-four {
+  background: #666;
+}
+#example-four .active-1 {
+  background: #999999;
+}
+#example-four .active-2 {
+  background: #8c8c8c;
+}
+#example-four .active-3 {
+  background: gray;
+}
+#example-four .active-4 {
+  background: #737373;
+}
+
+nav {
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+nav a {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+nav a.active-1 {
+  -moz-transform: scale(1.1) translateX(24px);
+  -ms-transform: scale(1.1) translateX(24px);
+  -webkit-transform: scale(1.1) translateX(24px);
+  transform: scale(1.1) translateX(24px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  z-index: 3;
+}
+nav a.active-2 {
+  -moz-transform: scale(1.07) translateX(12px);
+  -ms-transform: scale(1.07) translateX(12px);
+  -webkit-transform: scale(1.07) translateX(12px);
+  transform: scale(1.07) translateX(12px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+nav a.active-3 {
+  -moz-transform: scale(1.04) translateX(4px);
+  -ms-transform: scale(1.04) translateX(4px);
+  -webkit-transform: scale(1.04) translateX(4px);
+  transform: scale(1.04) translateX(4px);
+  z-index: 1;
+}
+nav a.active-4 {
+  -moz-transform: scale(1.01) translateX(2px);
+  -ms-transform: scale(1.01) translateX(2px);
+  -webkit-transform: scale(1.01) translateX(2px);
+  transform: scale(1.01) translateX(2px);
+  z-index: 1;
+}
