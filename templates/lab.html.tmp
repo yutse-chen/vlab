@@ -57,8 +57,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <b style="color: white;">||</b>
-
         <div class="collapse navbar-collapse" id="navbarsExample02">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -66,12 +64,9 @@
                 >Home <span class="sr-only">(current)</span></a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="edit.html">Edit-instrution</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="upload.html">Upload</a>
-            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -86,20 +81,19 @@
           <div class="card-title fnt-weight-bold mt-4 d-inline">
             <!-- save button -->
             <button class="btn rounded-pill bg-light ml-3" type="button" onclick="checkUpload()">
-              <i class="bi bi-save"></i> Analyze .csv
+              <i class="bi bi-save" onclick="startBurn()"></i> 開始燒錄
             </button>
             </p>
           </div>
-
-
-
           <!-- Action content -->
           <div class="card text-center" >
             <div class="card-header">
-              <button type="button" class="button btn"><i class="bi bi-sticky"></i></button>
-              <button type="button" class="button btn"><i class="bi bi-arrow-up"></i></button>
-              <button type="button" class="button btn"><i class="bi bi-arrow-down"></i></button>
-              <button type="button" class="button btn"><i class="bi bi-caret-right-fill" onclick="play()"></i></button>      
+              <button type="button" class="button btn"><i class="bi bi-sticky" onclick="cleanAll()"></i></button>
+              <button type="button" class="button btn"><i class="bi bi-plus" onclick="addTask()"></i></button>
+              <button type="button" class="button btn"><i class="bi bi-dash" onclick="delTask()"></i></button>
+              <button type="button" class="button btn"><i class="bi bi-arrow-up" onclick="arrowUp()"></i></button>
+              <button type="button" class="button btn"><i class="bi bi-arrow-down" onclick="arrowDown()"></i></button>
+              <button type="button" class="button btn"><i class="bi bi-caret-right-fill" onclick="play()"></i></button>
 
             </div>
             <div class="card-body">
@@ -127,11 +121,17 @@
                     <td>0 1 2</td>
                     <td></td>
                   </tr>
-                  
                 </tbody>
               </table>
             </div>
-
+            <div class="card-footer text-muted">
+              <form>
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">請選擇燒錄檔(.sof)</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1" />
+                </div>
+              </form>
+            </div>
           </div>
         </div>
 
@@ -144,61 +144,61 @@
                 <h5 class="card-header">Seven-segment</h5>
                 <div class="card-body card-io" style="margin: auto;">
                   <div class="seven-segment">
-                    <div id="3_a" class="3 a"></div>
-                    <div id="3_b" class="3 b"></div>
-                    <div id="3_c" class="3 c"></div>
-                    <div id="3_d" class="3 d"></div>
-                    <div id="3_e" class="3 e"></div>
-                    <div id="3_f" class="3 f"></div>
-                    <div id="3_g" class="3 g">
-                      <div id="3_top" class="3 h on"></div>
-                      <div id="3_bottom" class="3 i on"></div>
+                      <div id="3_a" class="3 a"></div>
+                      <div id="3_b" class="3 b"></div>
+                      <div id="3_c" class="3 c"></div>
+                      <div id="3_d" class="3 d"></div>
+                      <div id="3_e" class="3 e"></div>
+                      <div id="3_f" class="3 f"></div>
+                      <div id="3_g" class="3 g">
+                        <div id="3_top" class="3 h on"></div>
+                        <div id="3_bottom" class="3 i on"></div>
+                      </div>
+                      <!-- . -->
+                      <div class="hh"></div>
                     </div>
-                    <!-- . -->
-                    <div class="hh"></div>
-                  </div>
-                  <div class="seven-segment">
-                    <div id="2_a" class="2 a"></div>
-                    <div id="2_b"class="2 b"></div>
-                    <div id="2_c"class="2 c"></div>
-                    <div id="2_d"class="2 d"></div>
-                    <div id="2_e"class="2 e"></div>
-                    <div id="2_f"class="2 f"></div>
-                    <div id="2_g"class="2 g">
-                      <div id="2_top"class="h"></div>
-                      <div id="2_bottom"class="i"></div>
-                    </div>
-                    <div class="hh"></div>
+                    <div class="seven-segment">
+                      <div id="2_a" class="2 a"></div>
+                      <div id="2_b"class="2 b"></div>
+                      <div id="2_c"class="2 c"></div>
+                      <div id="2_d"class="2 d"></div>
+                      <div id="2_e"class="2 e"></div>
+                      <div id="2_f"class="2 f"></div>
+                      <div id="2_g"class="2 g">
+                        <div id="2_top"class="h"></div>
+                        <div id="2_bottom"class="i"></div>
+                      </div>
+                      <div class="hh"></div>
 
-                  </div>
-                  <div class="seven-segment">
-                    <div class="1 a"></div>
-                    <div class="1 b"></div>
-                    <div class="1 c"></div>
-                    <div class="1 d"></div>
-                    <div class="1 e"></div>
-                    <div class="1 f"></div>
-                    <div class="1 g">
-                      <div class="1 h"></div>
-                      <div class="1 i"></div>
                     </div>
-                    <div class="hh"></div>
+                    <div class="seven-segment">
+                      <div class="1 a"></div>
+                      <div class="1 b"></div>
+                      <div class="1 c"></div>
+                      <div class="1 d"></div>
+                      <div class="1 e"></div>
+                      <div class="1 f"></div>
+                      <div class="1 g">
+                        <div class="1 h"></div>
+                        <div class="1 i"></div>
+                      </div>
+                      <div class="hh"></div>
 
-                  </div>
-                  <div class="seven-segment">
-                    <div class="0 a"></div>
-                    <div class="0 b"></div>
-                    <div class="0 c"></div>
-                    <div class="0 d"></div>
-                    <div class="0 e"></div>
-                    <div class="0 f"></div>
-                    <div class="0 g">
-                      <div class="0 h"></div>
-                      <div class="0 i"></div>
                     </div>
-                    <div class="hh"></div>
+                    <div class="seven-segment">
+                      <div class="0 a"></div>
+                      <div class="0 b"></div>
+                      <div class="0 c"></div>
+                      <div class="0 d"></div>
+                      <div class="0 e"></div>
+                      <div class="0 f"></div>
+                      <div class="0 g">
+                        <div class="0 h"></div>
+                        <div class="0 i"></div>
+                      </div>
+                      <div class="hh"></div>
 
-                  </div>
+                    </div>
                 </div>
               </div>
             

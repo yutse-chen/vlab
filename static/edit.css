@@ -1,0 +1,19 @@
+.form-control {
+    border: 0px;
+    text-align: center;
+}
+
+.card-edit {
+    height: 550px;
+    overflow: auto;
+}
+
+.card-rom {
+    height: 380px;
+    overflow: auto;
+}
+
+/* .card-instruction {
+    height: 600px;
+    overflow: auto;
+} */

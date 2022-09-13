@@ -40,12 +40,12 @@ async function playProc(fetchData) {
 
   for(;i < seg.length; i++)
   {
-    // console.log(seg[i].seg_3);
-    // playProcSeg(3, seg[i].seg_3)
-    // playProcSeg(2, seg[i].seg_2);
-    // playProcSeg(1, seg[i].seg_1);
-    // playProcSeg(0, seg[i].seg_0);
-    // await playProcSleep(1000);    
+    console.log(seg[i].seg_3);
+    playProcSeg(3, seg[i].seg_3)
+    playProcSeg(2, seg[i].seg_2);
+    playProcSeg(1, seg[i].seg_1);
+    playProcSeg(0, seg[i].seg_0);
+    await playProcSleep(1000);    
   }
     console.log( Object.values(seg[i-1]));
     // console.log( Object.values(s_list[i-1].seg_3).map(Math.abs));

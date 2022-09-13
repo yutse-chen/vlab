@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- sweet alaer2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- toggle Switch -->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <script  type="text/javascript" src="lab.js"></script>
+
+    <link href="lab.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>虛擬實驗室-上傳</title>
+  </head>
+  <body >
+    <!-- navbar -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Virtual Lab</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarsExample02"
+          aria-controls="navbarsExample02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <b style="color: white;">||</b>
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="lab.html"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="edit.html">Edit-instrution</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Upload</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- de0 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 themed-grid-col div-fixd">
+                <div class="card">
+                    <div class="card-body card-notice">
+                      <h5 class="card-title">上傳燒錄檔(.sof)前，請注意以下事項：</h5> </hr>
+                      <ol>
+                        <li>請使用我們提供之 <a href="#">de10_empty</a> 進行編譯</li>
+                        <li>若要自訂義指令，可自行修改 instruction_rom.v 內 rom 區塊的值，或是使用我們提供的編輯頁面(Edit-instruction)
+                            </br>
+                            <p>※請記得修改 INST_MAX 的值，若想改變指令間隔時間可更改 CNT_MAX (預設 10 ， 請介於 6 ~ 500000)</p>
+                        </li>
+                        <li>
+                            請將檔名改成 學號.sof 再上傳
+                        </li>
+                        <li>
+                            燒錄完成後，會將 csv 檔寄去你留下學號的學校信箱
+                        </li>
+                        <li>
+                            收到檔案後，可將 csv 檔拿去 matlab 中跑圖形，或是拿到我們網站中的 Home 看結果
+                        </li>
+                      </ol>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+
+            </div>
+          </div>
+    </div>
+
+  </body>
+</html>

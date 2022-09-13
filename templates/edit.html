@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- sweet alaer2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- toggle Switch -->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <script  type="text/javascript" src="lab.js"></script>
+    <script  type="text/javascript" src="edit.js"></script>
+
+
+    <link href="{{ url_for('static', filename='edit.css') }}" rel="stylesheet" />
+    <script  type="text/javascript" src="{{url_for('static', filename='edit.js')}}"></script>
+
+    <link href="edit.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>虛擬實驗室-指令編輯</title>
+  </head>
+  <body >
+    <!-- navbar -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Virtual Lab</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarsExample02"
+          aria-controls="navbarsExample02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <b style="color: white;">||</b>
+
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="lab.html"> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Edit-instrution</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="upload.html">Upload</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- de0 -->
+    <div class="container">
+      <div class="row mb-3">
+        <!-- pg generator -->
+        <div class="col-md-4 themed-grid-col div-fixd">
+
+
+          <!-- Action content -->
+          <div class="card text-center" >
+            <div class="card-header">
+              <button type="button" class="button btn" onclick="check_clear()"><i class="bi bi-sticky"></i></button>
+              <button type="button" class="button btn" onclick="instruction_plus()"><i class="bi bi-plus"></i></button>
+              <button type="button" class="button btn" onclick="instruction_minus()"><i class="bi bi-dash"></i></button>
+              <button type="button" class="button btn" onclick="instruction_generate()"><i class="bi bi-caret-right-fill"></i></button>      
+
+            </div>
+            <div class="card-body card-edit">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Button</th>
+                    <th scope="col">Switch</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">0</th>
+                    <td>
+                      <input type="text" class="form-control" id="validationDefault02" placeholder="2 1 0" value="111" disabled style="background-color: white;">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="validationDefault02" placeholder="2 1 0" value="0000000000" disabled  style="background-color: white;">
+                    </td>
+                  </tr>
+
+                  <!-- <tr>
+                    <th scope="row">2</th>
+                    <td>0 1 2</td>
+                    <td></td>
+                  </tr> -->
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- diplay de0 -->
+        <div class="col-md-8 themed-grid-col ">
+          <div class="row">
+            <div class="col-md-12 ">
+              <!-- instruction_rom.v -->
+              <div class="card" >
+                <h5 class="card-header">instrution_rom.v</h5>
+                <div class="card-body card-rom"  >
+                  <p>// rom</br>
+                    always @(posedge clk)</br>
+                    begin</br>&emsp;
+                    case (cnt_inst)  </br>&emsp;&emsp;
+                          5'd0: data_inst <= 16'he000;   &emsp; //初始值，請不要更改</br>&emsp;
+                      endcase</br>
+                    end</p>
+                </div>
+              </div>
+            </div>
+            <!-- switch & button -->
+            <div class="col-md-12 ">
+              <div class="card">
+                <h5 class="card-header">Switch & Button
+                <button type="button" class="button btn" onclick="scan_io()" style="padding: 0%;"><i class="bi bi-arrow-up-left-circle"></i></button>
+                
+                </h5>
+                <!-- Switch: checked on  -->                
+                <div class="card-body card-io" >
+                  <input id="switch9" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch8" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch7" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch6" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch5" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch4" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch3" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch2" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch1" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                  <input id="switch0" type="checkbox" data-toggle="toggle" data-onstyle="outline-dark" data-offstyle="outline-dark" data-size="sm">&ensp;
+                </div>        
+                <!-- button -->
+                <div class="card-body card-io" style="padding-top: 0%;">
+                  <input id="io-btn2" type="checkbox" data-toggle="toggle" data-onstyle="dark" data-offstyle="dark" data-style="quick" data-on="Click" data-off="  ">&ensp;
+                  <input id="io-btn1" type="checkbox" data-toggle="toggle" data-onstyle="dark" data-offstyle="dark" data-style="quick" data-on="Click" data-off="  " >&ensp;
+                  <input id="io-btn0" type="checkbox" data-toggle="toggle" data-onstyle="dark" data-offstyle="dark" data-style="quick" data-on="Click" data-off="  ">&ensp;
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
