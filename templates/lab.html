@@ -105,9 +105,15 @@
             <div class="card-header">
               <button type="button" class="button btn"><i class="bi bi-sticky"></i></button>
               <button type="button" class="button btn"><i class="bi bi-arrow-up"></i></button>
-              <button type="button" class="button btn"><i class="bi bi-arrow-down"></i></button>
+              <button type="button" class="button btn"><i class="bi bi-arrow-down" onclick="arrowDown()"></i></button>
               <button type="button" class="button btn"><i class="bi bi-caret-right-fill" onclick="play()"></i></button>      
-
+              <button type="button" class="button btn"><i class="bi bi-pause" onclick="pause()"></i></button>
+              <select id="timeunit">
+                <option value = "1000">1 秒</option>
+                <option value = "2000">2 秒</option>
+                <option value = "5000">5 秒</option>
+                <option value = "10000">10 秒</option>
+            </select>
             </div>
             <div class="card-body">
               <table class="table">

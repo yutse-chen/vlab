@@ -1,3 +1,9 @@
+var stop = 0;
+var start_play = 1;
+var timeunit = 1000;
+var play_task;
+
+
 function checkUpload(){
     Swal.fire({
         title: '請確認是否上傳此內容?',
@@ -43,31 +49,44 @@ function playProcSeg(f, l ) {
 async function playProc(fetchData) {
   var i = 0;
   var seg = fetchData.output;
-
-  for(;i < seg.length; i++)
-  {
-    console.log(seg[i].seg_3);
-    playProcSeg(3, seg[i].seg_3)
-    playProcSeg(2, seg[i].seg_2);
-    playProcSeg(1, seg[i].seg_1);
-    playProcSeg(0, seg[i].seg_0);
-    await playProcSleep(1000);    
+  start_play = 0;
+  while (true){
+    for(i = 0;i < seg.length; i++)
+    {
+      do{
+        console.log(seg[i].seg_3);
+        playProcSeg(3, seg[i].seg_3)
+        playProcSeg(2, seg[i].seg_2);
+        playProcSeg(1, seg[i].seg_1);
+        playProcSeg(0, seg[i].seg_0);
+        await playProcSleep(timeunit);
+      } while(stop)
+    }
   }
-    // console.log( Object.values(seg[i-1]));
-    // console.log( Object.values(s_list[i-1].seg_3).map(Math.abs));
-    // playProcInit(i);
-
 }
 
 function play() {
-  fetch('/test?arg=123')
-  .then(response => response.json())
-  .then(fetchData => {
-    console.log(fetchData.seg)
-    playProc(fetchData)
-  })
-  .catch(console.error);
+
+  if (start_play){
+    fetch('/test?arg=123')
+    .then(response => response.json())
+    .then(fetchData => {
+      // console.log(fetchData.seg)
+      playProc(fetchData)
+    })
+    .catch(console.error);
+  }
+  else{
+    timeunit = document.getElementById("timeunit").value;
+    stop = 0;
+  }
 }
+
+function pause() {
+  stop =1;
+}
+
+
 
 function cleanAll() {
   console.log("[DEBUG] cleanAll")
@@ -86,6 +105,7 @@ function arrowUp() {
 }
 
 function arrowDown() {
+  // play_task.abort();
   console.log("[DEBUG] arrowDown")
 }
 
@@ -120,18 +140,18 @@ function arrowDown() {
 //   });
 
 
-$(document).on('submit','#myForm',function(e)
-{
-  e.preventDefault();
-  $.ajax({
-    type:'POST',
-    url:'/',
-    data:{
-      myfile:$("#myfile").val()
-    },
-      success:function()
-    {
-      alert('saved');
-    }
-  })
-});
+// $(document).on('submit','#myForm',function(e)
+// {
+//   e.preventDefault();
+//   $.ajax({
+//     type:'POST',
+//     url:'/',
+//     data:{
+//       myfile:$("#myfile").val()
+//     },
+//       success:function()
+//     {
+//       alert('saved');
+//     }
+//   })
+// });

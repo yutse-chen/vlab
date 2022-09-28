@@ -55,13 +55,9 @@ def entry():
     # GET request
     if request.method == 'GET':
         args = request.args
-        # with open('./data/demo2.json') as jf:
-        #     msg = json.load(jf)
         msg = stp_parser()
         pp.pprint(msg)
         return json.dumps(msg, indent = 4)
-        # return msg
-        # return jsonify(msg) 
     # POST request
     if request.method == 'POST':
         print(request.get_json())
@@ -76,39 +72,12 @@ def uploaded_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # if request.method == 'POST':
-    #     file = request.files['upload_file']
-    #     filename = "123.csv"
-    #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], 
-    #                             filename))
-        # return redirect(url_for('uploaded_file',
-                                # filename=filename))
-    # return '''
-    # <!doctype html>
-    # <title>Upload new File</title>
-    # <h1>Upload new File</h1>
-    # <form action="" method=post enctype=multipart/form-data>
-    #   <p><input type=file name=file>
-    #      <input type=submit value=Upload>
-    # </form>
-    # '''
     return render_template('lab.html')
-
-
-# @app.route("/", methods=["POST","GET"])
-# def index():
-#     if request.method == "POST":
-#         # upload_file = request.form.get("myfile")
-#         upload_file = request.files['myfile']
-#         # upload_file.save(os.path.join("data", "upload_demo.csv"))
-#         # print(upload_file)
-    # return render_template('lab.html')
-
 
 @app.route('/upload', methods=['POST'])
 def upload():
     file = request.files['upload_file']
-    filename = "123.csv"
+    filename = "stp1.csv"
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], 
                             filename))
     return redirect(url_for('index'))
