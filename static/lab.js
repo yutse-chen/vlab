@@ -28,15 +28,21 @@ function playProcSeg(f, l ) {
     for (var i = 0; i < l.length; i++) {
         t = String.fromCharCode(seg.charCodeAt(0)+i);
         if (l[i] == 1){
-            // console.log('.' + t+'.' + f+ " Change");
-            $('.' + t + '.' + f).toggleClass('on');
+            console.log("[ON]" + t)
+            // console.log('.' + t+'.' + f+ " add");
+            $('.' + t + '.' + f).addClass('on');
+        }
+        else
+        {
+          // console.log('.' + t+'.' + f+ " remove");
+          $('.' + t + '.' + f).removeClass('on');
         }
     }
 }
 
 async function playProc(fetchData) {
   var i = 0;
-  var seg = fetchData.seg;
+  var seg = fetchData.output;
 
   for(;i < seg.length; i++)
   {
@@ -47,7 +53,7 @@ async function playProc(fetchData) {
     playProcSeg(0, seg[i].seg_0);
     await playProcSleep(1000);    
   }
-    console.log( Object.values(seg[i-1]));
+    // console.log( Object.values(seg[i-1]));
     // console.log( Object.values(s_list[i-1].seg_3).map(Math.abs));
     // playProcInit(i);
 
@@ -82,3 +88,50 @@ function arrowUp() {
 function arrowDown() {
   console.log("[DEBUG] arrowDown")
 }
+
+
+// $(document).ready(function ()
+//   {
+//       $("#myForm").submit(function (e)
+//           {
+//               //Stops submit button from refreshing page.
+//               e.preventDefault();
+
+//               var form_data = new FormData(this);
+
+//               $.ajax({
+//                   url: 'http://example/DB_1/AccessWeb/file_upload.php', //location of where you want to send image
+//                   dataType: 'json', // what to expect back from the PHP script, if anything
+//                   cache: false,
+//                   contentType: false,
+//                   processData: false,
+//                   data: form_data,
+//                   type: 'post',
+//                   success: function (response)
+//                       {
+//                           alert('success');
+//                       },
+//                   error: function ()
+//                       {
+//                           alert('failure');
+//                       }
+//               });
+//           });
+//   });
+
+
+$(document).on('submit','#myForm',function(e)
+{
+  e.preventDefault();
+  $.ajax({
+    type:'POST',
+    url:'/',
+    data:{
+      myfile:$("#myfile").val()
+    },
+      success:function()
+    {
+      alert('saved');
+    }
+  })
+});

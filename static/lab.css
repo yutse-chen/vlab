@@ -182,14 +182,14 @@
 
 
 
-.seven-segment .hh {
+.seven-segment .j {
   position: absolute;
   border: 8px solid black;
   top: 195px;
   left: 115px;
 }
 
-.seven-segment .hh.on {
+.seven-segment .j.on {
   border-color: #EE7A28;
 }
 
