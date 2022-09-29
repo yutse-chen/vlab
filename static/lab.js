@@ -34,7 +34,7 @@ function playProcSeg(f, l ) {
     for (var i = 0; i < l.length; i++) {
         t = String.fromCharCode(seg.charCodeAt(0)+i);
         if (l[i] == 1){
-            console.log("[ON]" + t)
+            // console.log("[ON]" + t)
             // console.log('.' + t+'.' + f+ " add");
             $('.' + t + '.' + f).addClass('on');
         }
@@ -46,6 +46,24 @@ function playProcSeg(f, l ) {
     }
 }
 
+function playProcLed(l) {
+  console.log(l)
+  for (var i = 0; i < l.length; i++) {
+    // t = String.fromCharCode(seg.charCodeAt(0)+i);
+    // console.log(typeof(i));
+
+    // if ( (l[i] != 1) || (parseInt(i,10) !== parseInt(9,10)) || (parseInt(i, 10) !== parseInt(8, 10)) ){
+    if ( l[i] != 1) {
+      $('.' + i + '.button-div').addClass('bg-red');
+    }
+    else
+    {
+      $('.' + i + '.button-div').removeClass('bg-red');
+    }
+  }
+}
+
+
 async function playProc(fetchData) {
   var i = 0;
   var seg = fetchData.output;
@@ -54,11 +72,12 @@ async function playProc(fetchData) {
     for(i = 0;i < seg.length; i++)
     {
       do{
-        console.log(seg[i].seg_3);
+        // console.log(seg[i].seg_3);
         playProcSeg(3, seg[i].seg_3)
         playProcSeg(2, seg[i].seg_2);
         playProcSeg(1, seg[i].seg_1);
         playProcSeg(0, seg[i].seg_0);
+        playProcLed(seg[i].led);
         await playProcSleep(timeunit);
       } while(stop)
     }
