@@ -34,6 +34,16 @@
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+
+
     <script  type="text/javascript" src="{{url_for('static', filename='lab.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -42,8 +52,44 @@
     <link href="{{ url_for('static', filename='lab.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>虛擬實驗室</title>
+
+    <script>
+      function init(){
+        var rslt = '{{rslt}}'
+        window.glob = rslt;
+
+        if (rslt != "False")
+        {
+          rslt = rslt.split('&#39;').join('"');
+
+          var seg = JSON.parse(rslt).output;
+          for(i = 0;i < seg.length; i++)
+          {
+
+            var switch_txt = "";
+            for(j  = 0; j < (seg[i].led).length; j++)
+            {
+
+              if ((seg[i].led)[j] == 1)
+              {
+                switch_txt = switch_txt + " " + j;
+              }
+            }
+            console.log(switch_txt);
+            $('#tbody').append(`<tr id=row`+ i +`><th scope="row">`+ i +`
+            <td></td>
+            <td>` + switch_txt + `</td>
+            </th></tr>`);
+          }
+        }
+        else
+        {
+          console.log("boo");
+        }
+      }
+    </script>
   </head>
-  <body >
+  <body onload="init()">
     <!-- navbar -->
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="container">
@@ -90,7 +136,7 @@
             <form action="/upload" method=post enctype=multipart/form-data>
               <input type="file" name="upload_file" />
               <br /><br />
-              <input type="submit" value="Upload"/>
+              <input type="submit" name="tmp_fn" id='smit'/>
               <!-- <button class="btn rounded-pill bg-light ml-3" type="submit" onclick="checkUpload()">
                 <i class="bi bi-save"></i> 確認上傳
               </button> -->
@@ -104,18 +150,18 @@
           <div class="card text-center" >
             <div class="card-header">
               <button type="button" class="button btn"><i class="bi bi-sticky"></i></button>
-              <button type="button" class="button btn"><i class="bi bi-arrow-up"></i></button>
+              <button type="button" class="button btn"><i class="bi bi-arrow-up" onclick="arrowUp()"></i></button>
               <button type="button" class="button btn"><i class="bi bi-arrow-down" onclick="arrowDown()"></i></button>
               <button type="button" class="button btn"><i class="bi bi-caret-right-fill" onclick="play()"></i></button>      
               <button type="button" class="button btn"><i class="bi bi-pause" onclick="pause()"></i></button>
-              <select class="form-select" id="timeunit">
+              <select class="selectpicker" id="timeunit">
                 <option value = "1000">1 秒</option>
                 <option value = "2000">2 秒</option>
                 <option value = "5000">5 秒</option>
                 <option value = "10000">10 秒</option>
             </select>
             </div>
-            <div class="card-body">
+            <div class="card-body my-custom-scrollbar my-custom-scrollbar-primary" style="overflow:scroll;height:100%;width:100%;overflow:auto">
               <table class="table">
                 <thead>
                   <tr>
@@ -124,8 +170,8 @@
                     <th scope="col">Switch</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody id="tbody">
+                  <!-- <tr>
                     <th scope="row">0</th>
                     <td></td>
                     <td></td>
@@ -139,7 +185,7 @@
                     <th scope="row">2</th>
                     <td>0 1 2</td>
                     <td></td>
-                  </tr>
+                  </tr> -->
                   
                 </tbody>
               </table>
