@@ -74,10 +74,14 @@ function playProcLed(l) {
     // if ( (l[i] != 1) || (parseInt(i,10) !== parseInt(9,10)) || (parseInt(i, 10) !== parseInt(8, 10)) ){
     if ( l[i] == 1) {
       $('.' + i + '.button-div').addClass('bg-red');
+      // $('switch' + i).removeClass('off');
+      $('body #switch'+i).bootstrapToggle('on');
+    
     }
     else
     {
       $('.' + i + '.button-div').removeClass('bg-red');
+      $('body #switch'+i).bootstrapToggle('off');
     }
   }
 }
@@ -173,23 +177,11 @@ function delTask() {
 }
 
 function arrowUp() {
-  console.log("[DEBUG] arrowUp")
-  // $('#tbody').append(`<tr><th scope="row">
-  // <td>0 2</td>
-  //  <td>1 2 5 6</td>
-  //  </th></tr>`);
-  fetch('/get_rslt')
-  .then(response => response.json())
-  .then(fetchData => {
-    parse_tbl(fetchData);
-    // console.log(fetchData)
-    // playProc(fetchData)
-  })
-  .catch(console.error);
-    
+  $('#switch1').prop('checked', true).change()
 }
 
 function arrowDown() {
-  // play_task.abort();
-  console.log("[DEBUG] arrowDown")
+  play_task.abort();
+  console.log("yee");
+  $('body #toggle-demo').bootstrapToggle('toggle')
 }
